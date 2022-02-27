@@ -29,11 +29,11 @@
     <div class="overflow-auto py-1">
       <nav class="nav justify-content-between flex-nowrap text-nowrap border-bottom">
         <a class="nav-link link-secondary d-none d-lg-block" href="#aboutMe">關於我</a>
-        <a class="nav-link link-secondary" href="#myBlog">部落格</a>
+        <a class="nav-link link-secondary" href="#myBlog">技術部落格</a>
         <a class="nav-link link-secondary" href="html/code.html">程式開發作品區</a>
-        <a class="nav-link link-secondary" href="#">文學作品</a>
-        <a class="nav-link link-secondary" href="#">電繪作品</a>
-        <a class="nav-link link-secondary d-none d-lg-block" href="#">聯絡資訊</a>
+        <a class="nav-link link-secondary" href="html/literature.html">文學作品</a>
+        <a class="nav-link link-secondary" href="html/doodle.html">電繪作品</a>
+        <a class="nav-link link-secondary d-none d-lg-block" href="#contact">聯絡資訊</a>
       </nav>
     </div>
 
@@ -101,84 +101,172 @@
       </div>
     </div>
 </div>
+<hr>
 
-<div id="myBlog" class="row mt-5 g-md-5">
+<div class="row mt-5 g-md-5">
   <div class="col-md-8">
     <article>
-      <h3 class="fw-bold mb-2">關於荒野求生</h3>
-      <p>2022年2月21日<a href="#" class="text-decoration-none px-2">胖胖龍爹地</a></p>
+      <h3 class="fw-bold mb-2 btn btn-primary" data-bs-toggle="collapse" href="#blog2">JS 核心篇內功心法</h3>
+      <p>2022年2月27日<a href="#" class="text-decoration-none px-2">胖胖龍爹地</a></p>
       <br>
-      <p class="border border-dark border-1 py-2 px-2">我把YT上的《荒野求生》每一季都看完了，我可以得出一個非常確信的結論，任何人的硬實力再高，不管你多會造窩、捕魚、狩獵、造船等等，硬實力都只需要有個基礎能力即可，真正影響你是否超乎常人的，無非是軟實力的強韌度，而這也是很難從後天快速習得的。
-      我感覺軟實力的養成跟長時間的生命經驗塑造比較有關，也就是說，能夠活到最後脫穎而出的，往往都是那些心理健康、心志堅韌，並且可以將孤獨當作晚餐而大快朵頤之人，這些人都不是凡人，共勉之。</p>
+      <p class="border border-dark border-1 py-2 px-2 collapse" id="blog2">
+        《JS核心篇 內功心法》<br><br>
+        
+        1.純值無法新增屬性，若非純值，即為物件(包含函式)。<br><br>
+        
+        2.以變數賦值變數，為傳值；以物件賦值物件，為傳參考。<br><br>
+        
+        3.為避免兩個物件間的傳參考特性，一慮用深層拷貝 JSON.parse(JSON.parse())最保險。<br><br>
+        
+        4.JSON的屬性和值其實都是雙引號包裹的字串，便於網路傳遞，但可透過框架轉為JS物件。<br><br>
+        
+        5.具名函式的函示名稱無法在函式外被調用。<br><br>
+        
+        6.函示若可被正常執行即毋須具名。<br><br>
+        
+        7.立即函式無法在函式外執行。<br><br>
+        
+        8.簡易呼叫的this盡可能不要調用，因為它的本質其實是undefined。<br><br>
+        
+        9.var的作用域是函式的作用域，所宣告者會成為全域變數，
+        let的作用域是大括號內的block作用域，
+        同一作用域下不可使用let重複宣告同一變數，也只活在大括號內。
+        <br><br>
+        10.非同步者如setTimeout會優先放入事件續列，暫不執行。
+        <br><br>
+        11.以const宣告變數為物件，則物件形同被凍結，無法刪改屬性，也無法被改為新物件。
+        <br><br>
+        12.JS賦值具有Hoisting特性，創造階段形同先賦予undefined的值，待到執行階段才給予實際的值。
+        <br><br>
+        13.以let賦值雖有Hoisting特性，但於創造階段不會先賦予undefined的值，因此產生一個暫時性死區(TDZ)，
+        使你無法去存取此變數因此報錯，直到實際宣告值的階段才結束。
+        <br><br>
+        14.若對於ES6語法不熟悉，建議團隊統一使用ESlint給予撰寫規範提示，規範原因可參閱ESlint文檔，
+        請透過Node.js於終端機安裝npm install eslint --global。
+        <br><br>
+        15.let宣告變數後未賦值，取用時是提示undefined，而const在宣告時需要賦予值，所以取用時是提示語法錯誤。
+        <br><br>
+        16.箭頭函式與傳統函式相比，箭頭函式沒有自己的this，也無法透過call、apply、bind重新給予this，
+        因此若箭頭函式內有this，則該this指向箭頭函式的外層，因此需改為傳統函式function才可正確指向。
+        <br><br>
+        17.箭頭函式不具有prototype，因此也無法作為建構函式使用。
+        <br><br>
+        18.箭頭函式無法回傳出物件實字。
+        <br><br>
+        19.判斷式中無法直接搭配箭頭函式，箭頭函式需搭配中括號，以免結構錯誤，如Vue生命週期之使用應寫入避免箭頭函式。
+        <br><br>
+        20.使用prototype函式新增屬性時，應避免使用箭頭函式，因為該this將指向全域。
+        <br><br>
+        21.ES6樣板字面值是為了解決過去字串用+號組合閱讀不易的問題。
+        <br><br>
+        22.樣板字面值：將字串以反引號、、(ctrl+')包覆，中間的變數則輸入${ 變數名稱 }。
+        <br><br>
+        23.${ 變數名稱 }也可加入判斷式，例如${ 變數名稱 || 變數名稱 }。
+        <br><br>
+        24.傳統寫法的ul、li標籤語尾須加上換行符號\才可換行，ES6語法使用反引號包覆ul、li標籤後則不需要。
+        <br><br>
+        25.VSC左下settings，右上角open settings，進入settings.json，在 setting.json 內的物件內加入emmet設定檔之後，即可在樣板字面值內使用emmet產生HTML結構。
+        <br><br>
+        26.${ 變數名稱 }中可以再插入${ 變數名稱 }，作為巢狀。
+        <br><br>
+        27.若函式中的參數數量不確定，可加入...arg作為其餘參數，後續打印只要傳入atg即可回傳出陣列。
+        <br><br>
+        28.promise用來處理非同步的行為，例如AJAX取得遠端資料即可搭配使用。<br><br>
+        寫法:
+        先宣告一個函式並return透過new建立的一個Promise物件，並使之帶有resolve和reject參數，
+        後續再呼叫其函式，此時promise在資料接收到之前為pending未確認狀態，
+        直到進入settled已確認狀態，會出現fulfilled的已實現狀態或rejected的已否決狀態，
+        在執行結果成功時，為fulfilled的已實現狀態，promise會透過resolve參數回傳結果並透過調用的函式以then接收，
+        而若是執行結果失敗，則會出現rejected的已否決狀態，promise會透過reject參數回傳結果並透過調用的函式以catch接收。
+        <br><br>
+        
+        29.axios是基於promise的遠端請求工具，但使用前須先載入axios套件。
+        <br><br>
+        30.jQuery也有自己的AJAX方法，但使用前須先載入jQuery套件，而且寫法不只一種。
+        <br><br>
+        31.非同步行為中如果再插入非同步行為，會形成巢狀的回呼地獄，因此改以axios的get方法，可以使第二次的回呼行為改以第二個then串接。
+        <br><br>
+        32.非promise基礎的套件，會有寫法不一致的問題，因此改以axios的get方法，可以使所有promise一律用then串接。
+        <br><br>
+        33.非promise基礎的套件，會有發出請求和結束時間不一致的問題，因此改以promise的all方法帶入axios.get(url)作為陣列，
+        後續以then串接帶入[res1, res2]，始之可以一同送出、一同回傳。
+        <br><br>
+        34.Promise Chain的串接方法為在第一個then底下return函式的另一個值，之後在下方補上第二個then方法，
+        但若其中一個return出錯或失敗，則會直接跳到catch結果，catch後若有接return則可以執行新一個then。
+        <br><br>
+        35.then其實可傳入兩個callback function，
+        因此可以寫入第一個then(res) => {} 作為成功接收結果，
+        並後頭加上第二個(rej) => {} 作為失敗接收結果。
+        <br><br>
+        36.Callback函式 (Callback function)，CallBack又稱為回調、回函、回呼函式，
+        在某一函式執行時或執行後，依條件或依序去執行所傳遞進來的函式。就是一個程式執行完再去執行另一個。
+        <br><br>
+        37.若需要同時發出多個api請求，可使用Promise.all([])，並傳入promiseFn(x, 毫秒數字)加入陣列，
+        回傳結果可以用then接收，並打印出各個(res[0], res[1], res[2])，
+        但只要有其一被拒絕則會進入catch方法。
+        <br><br>
+        38.Promise.race([])，則只會回傳第一個完成結果，因此只要打印一個res即可，
+        但只要有"第一個"被拒絕的結果則會進入catch方法。
+        <br><br>
+        39.XMLHttpRequest建構函式可產生物件作為遠端請求使用，但原始碼並不好管理，建議可改為promise寫法，
+        只要傳入url即可，並使用resole(req,response)、reject(req)以及get(url)加上then及catch方法來取得結果，
+        get也可補上return get(url)並加上第二個then來串接使用。
+        <br><br>
+        40.{JSON} Placeholder會產生假資料提供API學習使用。<br><br>
+</p>
     </article>
   </div>
-  
-    <div id="myBlog" class="row mt-5 g-md-5">
-      <div class="col-md-8">
-        <article>
-          <h3 class="fw-bold mb-2">關於良師</h3>
-          <p>2022年2月12日<a href="#" class="text-decoration-none px-2">胖胖龍爹地</a></p>
-          <br>
-          <p class="border border-dark border-1 py-2 px-2">良馬能遇到伯樂；
-            波吉能遇到德斯帕；
-            葛奴乙能遇到巴爾迪尼，
-            有幸身受點化，只因來者看中了緣分。
-            學歷優越卻只會照本宣科的不一定是好老師，
-            資歷淺薄卻能振聾發聵的反倒適合教育新手。
-            那些良師走過的坑，都是飽嚐磨難的來時路。
-            是故經師易遇而人師難尋。
-            實乃為師難，為良師更難。
-            人生路上得一良師，如心頭明燈，多年憶起仍感念際遇，唯有親身經歷，才明瞭良師何其難覓。</p>
-        </article>
-      </div>
 
-    <div class="row mt-5 g-md-5">
+    <div id="myBlog"  class="row mt-5 g-md-5">
       <div class="col-md-8">
         <article>
-          <h3 class="fw-bold mb-2">邪惡基地開張公告</h3>
+          <h3 class="fw-bold mb-2 btn btn-primary" data-bs-toggle="collapse" href="#blog1">邪惡基地開張公告</h3>
           <p>2022年2月12日<a href="#" class="text-decoration-none px-2">胖胖龍爹地</a></p>
           <br>
-          <p class="border border-dark border-1 py-2 px-2">賀開張!!!</p>
+          <p class="border border-dark border-1 py-2 px-2 collapse" id="blog1">賀開張!!!</p>
         </article>
     </div>
-
+<hr>
       
 
-      <div class="col-md-4 d-none d-md-block">
-        <div class="sticky-top" style="top: 16px">
+    <div class="col-md-4 d-none d-md-block">
           <div class="p-4 bg-light rounded">
-            <h4>首頁導覽</h4>
+            <h4 class="text-success" >首頁導覽</h4>
             <p class="mb-0">關於我：記錄有關胖胖龍爹地的遺文軼事</p>
-            <p class="mb-0">部落格：想到什麼就寫什麼的分享園地</p>
+            <p class="mb-0">技術部落格：想到什麼就寫什麼的技術分享園地</p>
             <p class="mb-0">程式開發作品區：一些稀奇古怪的小實驗</p>
             <p class="mb-0">文學作品：分享一些之前寫的廢文</p>
             <p class="mb-0">電繪作品：電腦繪圖作品分享</p>
             <p class="mb-0">聯絡資訊：如果想跟我聊天的話</p>
-          </div>
-          <div class="p-4">
-            <h4>封存</h4>
-            <ol class="list-unstyled">
-              <li><a href="#">2022年1月</a></li>
-              <li><a href="#">2022年2月</a></li>
-              <li><a href="#">2022年3月</a></li>
-              <li><a href="#">2022年4月</a></li>
-              <li><a href="#">2022年5月</a></li>
-              <li><a href="#">2022年6月</a></li>
-              <li><a href="#">2022年7月</a></li>
-              <li><a href="#">2022年8月</a></li>
-              <li><a href="#">2022年9月</a></li>
-              <li><a href="#">2022年10月</a></li>
-              <li><a href="#">2022年11月</a></li>
-              <li><a href="#">2022年12月</a></li>
-            </ol>
-          </div>
-          <div class="p-4">
-            <h4>追蹤我</h4>
+        
+          
+          <div class="p-0 py-2">
+            <h4 class="text-danger" id="contact">追蹤我</h4>
             <ul class="list-unstyled">
-              <li><a href="#">GitHub</a></li>
-              <li><a href="#">Facebook</a></li>
-              <li><a href="#">Youtube</a></li>
-              <li><a href="#">Instagram</a></li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github"
+                viewBox="0 0 16 16">
+                <path
+                  d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+              </svg>
+              <li><a href="https://github.com/dragondaddy2021" target="_blank" >GitHub</a></li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook"
+                viewBox="0 0 16 16">
+                <path
+                  d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+              </svg>
+              <li><a href="https://www.facebook.com/dragondaddy2021" target="_blank" >Facebook</a></li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-youtube"
+                viewBox="0 0 16 16">
+                <path
+                  d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z" />
+              </svg>
+              <li><a href="https://www.youtube.com/channel/UCOs3GICAvc6sm7hbgt5tTLw" target="_blank" >Youtube</a></li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram"
+                viewBox="0 0 16 16">
+                <path
+                  d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
+              </svg>
+              <li><a href="https://www.instagram.com/dragondaddy2021/" target="_blank" >Instagram</a></li>
             </ul>
           </div>
         </div>
