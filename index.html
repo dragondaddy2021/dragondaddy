@@ -104,6 +104,110 @@
 <hr>
 
 <div class="row mt-5 g-md-5">
+
+    <div class="col-md-8">
+      <article>
+        <h3 class="fw-bold mb-2 btn btn-primary" data-bs-toggle="collapse" href="#blog3">前端junior求職小攻略(一)</h3>
+        <p>2022年2月12日<a href="#" class="text-decoration-none px-2">胖胖龍爹地</a></p>
+        <br>
+        <p class="border border-dark border-1 py-2 px-2 collapse" id="blog3">
+          <br>
+          【白板題】(請背下來直到能在白板上手寫出整個答案的程度~)
+        <br><br>
+        一、請問var、let、const的差別為何？能舉出例子嗎？<br><br>
+        答案：<br><br>
+        var可以在全域或函式作用域、區塊作用域(循環語句)內使用，而var若在函式內宣告了一個變數名稱時，實際上是會下在window物件上，變成最高級的window物件的屬性，
+        因此後續將不可變更，例如在函式內宣告了一次var a = 1 ，在函式外打印a則只會提示a is not defined。此意即"var的全域污染性"。<br><br>
+        另外，var所宣告的變數名稱，可以再次透過var宣告該相同變數名稱。<br><br>
+        var在JS中存在"提升"的用法，意即var a = 1的情況下，創造階段的var a會被提升到作用域頂部，透過預留的記憶體空間先給予a其undefined的值。<br><br>
+        let宣告了一個變數名稱之後，在同一個作用域底下，不能再次使用let宣告同一個變數名稱，但是可以使用"變數名稱=某值"的方式修改。<br><br>
+        而在不同的作用域中，則可以被重複使用let宣告，例如全域作用域和函式作用域，即可重複使用let a = 1。
+        <br><br>
+        const適合用在不應修改的變數上，跟let一樣在同一個作用域底下，不能再次使用const宣告同一個變數名稱，而且不可以使用"變數名稱=某值"的方式修改。<br><br>
+        const宣告之變數則要求必須有值否則會報錯
+        但特例是因為物件是"傳參考"特性，若const宣告某變數名稱=某物件，則還是能夠修改其物件屬性，若要禁止修改則必須使用Object.freeze(變數名稱)的方式去凍結物件內容。<br><br>
+        
+        二、請使用map、forEach實作出[1,2,3]迴圈。<br><br>
+        答案：<br><br>
+        map() 方法會建立一個新的陣列，其內容為原陣列的每一個元素經由回呼函式運算後所回傳的結果之集合。<br><br>
+        const array = [1, 2, 3];<br><br>
+        
+        const map = array.map(x);<br><br>
+        
+        console.log(map);
+        會印出Aarray = [1, 2, 3];<br><br>
+        
+        
+        forEach() 方法會將陣列內的每個元素，皆傳入並執行給定的函式一次。<br><br>
+        const array = [1, 2, 3];<br><br>
+        
+        array.forEach(element => console.log(element));<br><br>
+        會印出<br>
+        1<br>
+        2<br>
+        3<br>
+        <br><br>
+        三、請使用for迴圈實作並印出出九九乘法表。<br><br>
+        答案：<br><br>
+        for(i = 1; i < 10; i++) { <br>
+           for(j=1; j < 10; j++)<br>
+          { <br>
+            console.log(i*j); <br>
+          <br><br>
+
+          【問答題】 <br><br>
+          一、請解釋一下何謂同步與非同步？ <br><br>
+          答案：<br><br>
+          JS為單執行緒，事件會依照順序排入事件佇列(queue)，等待瀏覽器做完一件事之後才能做下一件事，就算中間卡了一個迴圈也一樣得等，此即同步。 而諸如瀏覽器所提供的功能，像是setTimeout(
+          )這種有設定timer功能的函式，因為需要等待倒數計時，因此會例外被放到最後才加入事件佇列，即便它設定0秒也一樣，此即非同步。 
+
+          <br><br>
+          二、你對ES6瞭解有多深？ <br><br>
+          答案： <br><br>
+          1.新增了let、const的新宣告方法<br><br>
+          2.可以使用(、${變數名稱}、)的樣板字面值，方便字串拼接，也可以拿來寫函式、判斷式。<br><br>
+          3.可以透過let [序號]=arr;的方式取用arr中的值，也可以透過let
+          {animal:{dog}}=obj;的方式來取出obj中的屬性，和其下的屬性。<br><br>
+          4.透過[...arr]，可以快速將arr陣列中的值展開，也可以透過[x,...z]或{x,...z}的方式取代剩餘的參數，意即其餘參數，但其餘參數必須放在最後。 <br><br>
+          5.可以在宣告或使用函式時幫參數加上預設值。(例如lat {a='狗'
+          ,b='貓' })=obj; <br><br>
+          6.新增了箭頭函式。 只有一個回傳值時，可以省略return，但如果有使用大括號 {} 包覆就還是必須加上 return，不然傳入的值會印出 undefined。 只有一個參數時，則可以省略括號 ( )。<br><br>
+          另外，箭頭函式內的this會等於外層函式的this。 <br><br>
+          7.可以使用export加在想輸出的物件、類別、函式與原始資料(變數與常數)之前，並使用import加上{}部分引入或*+自定義的模組名稱進行全部引入。<br><br>
+          8.建議可以安裝Babel轉譯器協助轉成需要的ES版本。 
+
+          <br><br>
+          三、若Git Flow上，同事於前一晚已在Dev主分支上有commit的紀錄， 你隔天上班發現你開出feature旁分支並且修改內容commit後才發現此事，
+          但同事又希望維持一個主分支應如何處理？ <br><br>
+          答案： <br><br>
+          1.若從Dev方使用merge合併feature後，仍會留下一個醜醜的feature分支， 此時應推薦用 git pull --rebase
+          的方式，才不會留下一個醜醜的feature分支， 而與merge不同的是，merge只要解衝突一次， 但rebase把你把本地的repo從上次pull之後的所有變更都先暫存起來，然後回復到上次pull時本地的repo狀態，
+          之後才會去套用遠端repo的變更，最後再套用你剛剛暫存下來的本地repo變更， 因此rebase過程中如發生衝突則會暫停rebase，需要你去修改解決你自己本地repo後來變更內容的衝突。
+          <br><br>
+          2.但如果你變更的內容比較多，預期會有較多的衝突，建議還是用merge。 <br>
+          如果你變更的內容比較少，不太預期有衝突，則建議用rebase，等於把你自己的commit砍掉重新commit。 <br><br>
+
+          四、請簡述RESTful API用途是什麼？<br><br>
+          答案： <br><br>
+          RESTful API全稱為Representational state transfer Application Programming Interface， 意即表現層狀態轉換應用程式介面， RESTful
+          其實是指它的API設計風格。 <br><br>
+          核心有三大訴求： <br><br>
+          1.資源位置的URL，每個資源都會有唯一的URL位置。 <br><br>
+          2.對資源的取用動作，每個資源都會有GET、POST、PUT、DELETE等動作。<br><br>
+          3.資源呈現的格式：API資源可以以YAML、XML、JSON等方式呈現。 <br><br>
+          
+          RESTful API將瀏覽器作為client端口，統一請求的界面格式，使其具備可重用的優點，
+          並利用cache來做到存取速度優化，也讓界面與資料分離，並達到節省伺服器計算成本的好處。 <br><br>
+          
+          其用途在於若有多組資源需要被不同平台使用時， 為了統一標準，避免DB部分重工， 可以透過RESTful API的方式統一使用HTTP協定操作，
+          因此API方只要知道各平台的http-client， 平台方只要配合相應的資料格式，即可做到各平台支援。 
+          <br><br>
+          【文末補充】 <br><br>
+          若要面試junior都是考諸如此類的基本功。 <br><br>
+          祝大家都能順利面試上心儀的工作唷~~</p>
+      </article>
+    </div>
+
   <div class="col-md-8">
     <article>
       <h3 class="fw-bold mb-2 btn btn-primary" data-bs-toggle="collapse" href="#blog2">JS 核心篇內功心法</h3>
